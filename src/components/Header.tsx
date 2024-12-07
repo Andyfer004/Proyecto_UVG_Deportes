@@ -2,6 +2,7 @@ function Header() {
   return (
     <header
       style={{
+        fontFamily: "'Inter', sans-serif",
         width: "80%",  
         display: "flex",
         alignItems: "center",
@@ -9,8 +10,8 @@ function Header() {
         padding: "0.5rem 2rem",
         backgroundColor: "#ffffff",
         position: "sticky",
-        top: 10,
         zIndex: 1000,
+        marginBottom: "2rem",
       }}
     >
       {/* Logo */}
@@ -30,11 +31,11 @@ function Header() {
             color: "#333",
             textDecoration: "none",
             fontSize: "1rem",
-            fontWeight: 500,
+            fontWeight: 750,
             cursor: "pointer",
           }}
         >
-          Home
+          Inicio
         </a>
         <a
           href="#"
@@ -46,7 +47,7 @@ function Header() {
             cursor: "pointer",
           }}
         >
-          Services
+          Deportes
         </a>
         <a
           href="#"
@@ -58,7 +59,7 @@ function Header() {
             cursor: "pointer",
           }}
         >
-          Contact
+          Preguntas
         </a>
       </nav>
 
@@ -103,7 +104,7 @@ function Header() {
             ((e.target as HTMLButtonElement).style.backgroundColor = "#018E38")
           }
         >
-          Register
+          Sign up
         </button>
       </div>
     </header>
