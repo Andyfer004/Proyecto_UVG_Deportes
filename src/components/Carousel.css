@@ -188,32 +188,56 @@
 }
 
 /* Tabletas */
-@media (max-width: 768px) and (min-width: 481px) {
+@media (max-width: 1200px) and (min-width: 768px) {
+  .carousel-button {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.502);
+    color: black;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    z-index: 10;
+  }
+  
   .carousel {
-    max-width: 90%; /* Ocupa el 90% del ancho */
+    max-width: 50%; 
     margin: 0 auto;
   }
 
   .carousel-image {
-    height: 400px; /* Ajusta la altura */
+    height: 350px; 
   }
 
   .carousel-button {
-    padding: 0.5rem 1rem; /* Ajusta el tamaño del botón */
+    padding: 2rem 1rem; 
     font-size: 0.9rem;
   }
 
   .carousel-button.prev {
-    left: 5%;
+    left: 2%;
   }
 
   .carousel-button.next {
-    right: 5%;
+    right: 2%;
   }
 
   .indicator {
-    width: 14px; /* Tamaño más grande para tabletas */
+    width: 14px; 
     height: 14px;
+  }
+
+  .modal-content {
+    max-width: 95%; 
+    max-height: 95%; 
+  }
+  
+  .modal-close {
+    top: 2px;
+    right: 2px;
+    font-size: 1.2rem; 
   }
 }
 
