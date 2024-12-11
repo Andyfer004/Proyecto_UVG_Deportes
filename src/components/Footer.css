@@ -1,0 +1,106 @@
+.footer {
+    width: 100%;
+    background-color: #1a1a1a; 
+    color: #ffffff; 
+    padding: 2rem 0;
+    box-sizing: border-box;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .footer-left {
+    flex: 1;
+  }
+  
+  .footer-logo {
+    height: 30px;
+    cursor: pointer;
+  }
+  
+  .footer-copyright {
+    margin: 1rem 0;
+    font-size: 0.8rem;
+  }
+  
+  .footer-instagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1); 
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+  }
+  
+  .footer-instagram:hover {
+    transform: scale(1.1); 
+  }
+  
+  .instagram-icon {
+    width: 15px;
+    height: 15px;
+    filter: invert(100%); 
+  }
+  
+  .footer-center {
+    flex: 1;
+  }
+  
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    line-height: 1.8;
+  }
+  
+  .footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-right {
+    flex: 1;
+  }
+  
+  .footer-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .footer-input {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  .footer-submit {
+    background-color: #4caf50; 
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .footer-submit:hover {
+    background-color: #45a049; 
+  }  

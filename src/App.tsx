@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Login from './views/Login';
 import Register from './views/Register';
 import LandingPage from './views/LandingPage';
+import "./index.css";
 
 function App() {
   return (
