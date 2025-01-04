@@ -17,7 +17,6 @@
   padding: 0 1rem;
 }
 
-/* Sección Izquierda */
 .footer-left {
   flex: 1;
 }
@@ -55,7 +54,6 @@
   filter: invert(100%);
 }
 
-/* Sección Central */
 .footer-center {
   flex: 1;
 }
@@ -76,7 +74,6 @@
   text-decoration: underline;
 }
 
-/* Sección Derecha */
 .footer-right {
   flex: 1;
 }
@@ -108,13 +105,10 @@
   background-color: #45a049;
 }
 
-/* Responsive Design */
-
-/* Teléfonos Pequeños (< 768px) */
 @media (max-width: 768px) {
   .footer-container {
-    flex-direction: column; /* Cambia a un diseño vertical */
-    text-align: center; /* Centra el contenido */
+    flex-direction: column; 
+    text-align: center; 
     gap: 2rem;
   }
 
@@ -122,38 +116,38 @@
   .footer-center,
   .footer-right {
     flex: none;
-    width: 100%; /* Cada sección ocupa todo el ancho */
+    width: 100%; 
   }
 
   .footer-logo {
-    margin-bottom: 1rem; /* Añade un margen para separar los elementos */
+    margin-bottom: 1rem; 
   }
 
   .footer-input {
-    font-size: 0.9rem; /* Reduce el tamaño del texto */
+    font-size: 0.9rem; 
   }
 
   .footer-submit {
-    padding: 0.4rem 1rem; /* Botón más compacto */
+    padding: 0.4rem 1rem; 
     font-size: 0.9rem;
   }
 }
 
-/* Tabletas (768px - 992px) */
+
 @media (max-width: 992px) {
   .footer-container {
-    gap: 1.5rem; /* Espaciado menor entre las columnas */
+    gap: 1.5rem; 
   }
 
   .footer-left,
   .footer-center,
   .footer-right {
     flex: 1;
-    text-align: left; /* Mantén la alineación izquierda */
+    text-align: left; 
   }
 
   .footer-form {
-    flex-wrap: wrap; /* Permite que los elementos se ajusten */
+    flex-wrap: wrap; 
   }
 
   .footer-input {

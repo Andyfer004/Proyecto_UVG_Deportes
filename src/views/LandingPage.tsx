@@ -14,7 +14,7 @@ function LandingPage() {
       <main className="main-content">
         <Carousel />
 
-        {/* Sección de Introducción */}
+        {/* Sección de Introducción */}  
         <div className="intro-section">
           <h1>
             Compite, Gana, y Haz Historia en la{" "}
