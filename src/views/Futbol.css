@@ -2,12 +2,17 @@
     font-family: "Inter", sans-serif;
     width: 100vw;
     margin: 0 auto;
-    background-color: #ffffff; 
-    color: #333; 
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    align-items: stretch; 
-    overflow-x: hidden; 
     align-items: center;
+    overflow-x: hidden;
+  }
+
+  /* Contenido Principal */
+  .main-content {
+    flex: 1;
+    padding: 1rem;
+    text-align: center;
   }

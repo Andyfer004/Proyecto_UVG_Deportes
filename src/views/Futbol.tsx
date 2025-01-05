@@ -8,9 +8,9 @@ function Futbol() {
     return(
         <div className="futbol-page">
             <Header />
-            <main>
-              <h1>Fase de Grupos</h1>
-              <GroupTable />
+            <main className="main-content">
+                <h1>Fase de Grupos</h1>
+                <GroupTable />
             </main>
             <Footer/>
         </div>

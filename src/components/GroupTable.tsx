@@ -1,100 +1,126 @@
 import "./GroupTable.css";
+import MatchCard from "./MatchCard";
 import { useState } from "react";
 
-type Equipo = {
-  id: number;
-  nombre: string;
-  pj: number; // Partidos Jugados
-  g: number;  // Ganados
-  e: number;  // Empatados
-  p: number;  // Perdidos
-  pts: number; // Puntos
-};
-
-// Props iniciales (para los grupos)
-const grupos = ["Grupo A", "Grupo B", "Grupo C", "Grupo D"];
+type GroupKey = "A" | "B" | "C" | "D";
 
 function GroupStage() {
-  const [grupoSeleccionado, setGrupoSeleccionado] = useState("Grupo A");
-  const [vistaActual, setVistaActual] = useState("Posiciones"); // Posiciones o Partidos
+  const [activeGroup, setActiveGroup] = useState<GroupKey>("A");
+  const [activeTab, setActiveTab] = useState<"positions" | "matches">("positions");
 
-  // Datos simulados
-  const equipos: Equipo[] = [
-    { id: 1, nombre: "Equipo 1", pj: 3, g: 2, e: 0, p: 1, pts: 6 },
-    { id: 2, nombre: "Equipo 2", pj: 3, g: 1, e: 1, p: 1, pts: 4 },
-    { id: 3, nombre: "Equipo 3", pj: 3, g: 0, e: 2, p: 1, pts: 2 },
-  ];
+  // Datos de posiciones por grupo
+  const groupStandings: Record<GroupKey, { name: string; played: number; won: number; lost: number; points: number }[]> = {
+    A: [
+      { name: "Equipo A", played: 3, won: 2, lost: 1, points: 6 },
+      { name: "Equipo B", played: 3, won: 1, lost: 2, points: 3 },
+      { name: "Equipo C", played: 3, won: 0, lost: 3, points: 0 },
+    ],
+    B: [
+      { name: "Equipo X", played: 3, won: 3, lost: 0, points: 9 },
+      { name: "Equipo Y", played: 3, won: 2, lost: 1, points: 6 },
+      { name: "Equipo Z", played: 3, won: 1, lost: 2, points: 3 },
+    ],
+    C: [],
+    D: [],
+  };
+
+  // Datos de partidos por grupo
+  // Datos de partidos por grupo ajustados para incluir "status"
+const groupMatches: Record<GroupKey, { team1: string; team2: string; score1: number; score2: number; status: string }[]> = {
+  A: [
+    { team1: "Equipo A", team2: "Equipo B", score1: 2, score2: 1, status: "Finalizado" },
+    { team1: "Equipo B", team2: "Equipo C", score1: 3, score2: 1, status: "En progreso" },
+    { team1: "Equipo A", team2: "Equipo C", score1: 1, score2: 0, status: "Finalizado" },
+  ],
+  B: [
+    { team1: "Equipo X", team2: "Equipo Y", score1: 3, score2: 2, status: "Finalizado" },
+    { team1: "Equipo Y", team2: "Equipo Z", score1: 2, score2: 2, status: "En progreso" },
+    { team1: "Equipo X", team2: "Equipo Z", score1: 4, score2: 0, status: "Finalizado" },
+  ],
+  C: [],
+  D: [],
+};
+
+  const handleGroupChange = (group: GroupKey) => {
+    setActiveGroup(group);
+    setActiveTab("positions"); 
+  };
+
+  const renderPositions = () => (
+    <table className="group-table">
+      <thead>
+        <tr>
+          <th>Equipo</th>
+          <th>PJ</th>
+          <th>G</th>
+          <th>P</th>
+          <th>PTS</th>
+        </tr>
+      </thead>
+      <tbody>
+        {groupStandings[activeGroup].map((team, index) => (
+          <tr key={index}>
+            <td>{team.name}</td>
+            <td>{team.played}</td>
+            <td>{team.won}</td>
+            <td>{team.lost}</td>
+            <td>{team.points}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+
+  const renderMatches = () => (
+    <div className="match-list">
+      {groupMatches[activeGroup]?.map((match, index) => (
+        <MatchCard
+          key={index}
+          team1={match.team1}
+          team2={match.team2}
+          score1={match.score1}
+          score2={match.score2}
+          status={match.status}
+        />
+      ))}
+    </div>
+  );  
 
   return (
-    <div className="group-stage-container">
-      {/* Pestañas de Grupos */}
-      <div className="tabs">
-        {grupos.map((grupo) => (
+    <div className="tournament-container">
+
+      {/* Botones de grupos */}
+      <div className="group-buttons">
+        {(["A", "B", "C", "D"] as GroupKey[]).map((group) => (
           <button
-            key={grupo}
-            className={`tab-button ${
-              grupoSeleccionado === grupo ? "active" : ""
-            }`}
-            onClick={() => setGrupoSeleccionado(grupo)}
+            key={group}
+            onClick={() => handleGroupChange(group)}
+            className={`group-button ${activeGroup === group ? "active" : ""}`}
           >
-            {grupo}
+            Grupo {group}
           </button>
         ))}
       </div>
 
-      {/* Botones de Alternar Vista */}
-      <div className="toggle-buttons">
+      {/* Pestañas para "Posiciones" y "Partidos" */}
+      <div className="tabs-container">
         <button
-          className={`toggle-button ${
-            vistaActual === "Posiciones" ? "active" : ""
-          }`}
-          onClick={() => setVistaActual("Posiciones")}
+          className={`tab ${activeTab === "positions" ? "active" : ""}`}
+          onClick={() => setActiveTab("positions")}
         >
           Posiciones
         </button>
         <button
-          className={`toggle-button ${
-            vistaActual === "Partidos" ? "active" : ""
-          }`}
-          onClick={() => setVistaActual("Partidos")}
+          className={`tab ${activeTab === "matches" ? "active" : ""}`}
+          onClick={() => setActiveTab("matches")}
         >
           Partidos
         </button>
       </div>
 
-      {/* Contenido */}
-      <div className="content">
-        {vistaActual === "Posiciones" ? (
-          <table className="group-table">
-            <thead>
-              <tr>
-                <th>Equipo</th>
-                <th>PJ</th>
-                <th>G</th>
-                <th>E</th>
-                <th>P</th>
-                <th>PTS</th>
-              </tr>
-            </thead>
-            <tbody>
-              {equipos.map((equipo) => (
-                <tr key={equipo.id}>
-                  <td>{equipo.nombre}</td>
-                  <td>{equipo.pj}</td>
-                  <td>{equipo.g}</td>
-                  <td>{equipo.e}</td>
-                  <td>{equipo.p}</td>
-                  <td>{equipo.pts}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        ) : (
-          <div className="partidos">
-            {/* Aquí puedes agregar la lógica para mostrar partidos */}
-            <p>Aquí aparecerán los partidos del {grupoSeleccionado}.</p>
-          </div>
-        )}
+      {/* Contenido dinámico */}
+      <div className="table-container">
+        {activeTab === "positions" ? renderPositions() : renderMatches()}
       </div>
     </div>
   );
