@@ -74,15 +74,17 @@
     font-size: 0.8rem;
     font-weight: bold;
     color: #fff;
-    background-color: #4caf50; /* Verde para "En progreso" */
+    background-color: #f9a825; 
     border-radius: 4px;
   }
   
   .match-status.finalizado {
-    background-color: #999; /* Gris para "Finalizado" */
+    background-color: #018e38; 
   }
   
-  .match-status.proximo {
-    background-color: #007bff; /* Azul para "Próximo" */
-  }
+  .match-status.pendiente {
+    background-color: #757575; 
+  }  
+
+  
   

@@ -1,12 +1,20 @@
 import "./GroupTable.css";
-import MatchCard from "./MatchCard";
 import { useState } from "react";
+import MatchCard from "./MatchCard";
 
 type GroupKey = "A" | "B" | "C" | "D";
 
 function GroupStage() {
   const [activeGroup, setActiveGroup] = useState<GroupKey>("A");
   const [activeTab, setActiveTab] = useState<"positions" | "matches">("positions");
+  const [selectedMatch, setSelectedMatch] = useState<{
+    team1: string;
+    team2: string;
+    score1: number;
+    score2: number;
+    status: string;
+    location: string;
+  } | null>(null);
 
   // Datos de posiciones por grupo
   const groupStandings: Record<GroupKey, { name: string; played: number; won: number; lost: number; points: number }[]> = {
@@ -25,25 +33,28 @@ function GroupStage() {
   };
 
   // Datos de partidos por grupo
-  // Datos de partidos por grupo ajustados para incluir "status"
-const groupMatches: Record<GroupKey, { team1: string; team2: string; score1: number; score2: number; status: string }[]> = {
-  A: [
-    { team1: "Equipo A", team2: "Equipo B", score1: 2, score2: 1, status: "Finalizado" },
-    { team1: "Equipo B", team2: "Equipo C", score1: 3, score2: 1, status: "En progreso" },
-    { team1: "Equipo A", team2: "Equipo C", score1: 1, score2: 0, status: "Finalizado" },
-  ],
-  B: [
-    { team1: "Equipo X", team2: "Equipo Y", score1: 3, score2: 2, status: "Finalizado" },
-    { team1: "Equipo Y", team2: "Equipo Z", score1: 2, score2: 2, status: "En progreso" },
-    { team1: "Equipo X", team2: "Equipo Z", score1: 4, score2: 0, status: "Finalizado" },
-  ],
-  C: [],
-  D: [],
-};
+  const groupMatches: Record<GroupKey, { team1: string; team2: string; score1: number; score2: number; status: string; location: string }[]> = {
+    A: [
+      { team1: "Equipo A", team2: "Equipo B", score1: 2, score2: 1, status: "Finalizado", location: "Estadio 1" },
+      { team1: "Equipo B", team2: "Equipo C", score1: 3, score2: 1, status: "En progreso", location: "Estadio 2" },
+      { team1: "Equipo A", team2: "Equipo C", score1: 1, score2: 0, status: "Finalizado", location: "Estadio 3" },
+    ],
+    B: [
+      { team1: "Equipo X", team2: "Equipo Y", score1: 3, score2: 2, status: "Finalizado", location: "Estadio 4" },
+      { team1: "Equipo Y", team2: "Equipo Z", score1: 2, score2: 2, status: "En progreso", location: "Estadio 5" },
+      { team1: "Equipo X", team2: "Equipo Z", score1: 4, score2: 0, status: "Finalizado", location: "Estadio 6" },
+    ],
+    C: [
+      { team1: "Equipo X", team2: "Equipo Y", score1: 3, score2: 2, status: "Pendiente", location: "Estadio 4" },
+      { team1: "Equipo Y", team2: "Equipo Z", score1: 2, score2: 2, status: "En progreso", location: "Estadio 5" },
+      { team1: "Equipo X", team2: "Equipo Z", score1: 4, score2: 0, status: "Finalizado", location: "Estadio 6" },
+    ],
+    D: [],
+  };
 
   const handleGroupChange = (group: GroupKey) => {
     setActiveGroup(group);
-    setActiveTab("positions"); 
+    setActiveTab("positions");
   };
 
   const renderPositions = () => (
@@ -81,14 +92,14 @@ const groupMatches: Record<GroupKey, { team1: string; team2: string; score1: num
           score1={match.score1}
           score2={match.score2}
           status={match.status}
+          onClick={() => setSelectedMatch(match)} 
         />
       ))}
     </div>
-  );  
+  );
 
   return (
     <div className="tournament-container">
-
       {/* Botones de grupos */}
       <div className="group-buttons">
         {(["A", "B", "C", "D"] as GroupKey[]).map((group) => (
@@ -122,6 +133,41 @@ const groupMatches: Record<GroupKey, { team1: string; team2: string; score1: num
       <div className="table-container">
         {activeTab === "positions" ? renderPositions() : renderMatches()}
       </div>
+
+      {/* Modal para detalles del partido */}
+      {selectedMatch && (
+  <div className="modal">
+    <div className="modal-content">
+      {/* Título */}
+      <div className="modal-header">
+        <h2>Detalles del Partido</h2>
+      </div>
+
+      {/* Equipos y Marcador */}
+      <div className="teams">
+        <div className="team">{selectedMatch.team1}</div>
+        <div className="score">{selectedMatch.score1}</div>
+        <div className="vs">VS</div>
+        <div className="score">{selectedMatch.score2}</div>
+        <div className="team">{selectedMatch.team2}</div>
+      </div>
+
+      {/* Estado */}
+      <span className={`status ${selectedMatch.status.toLowerCase().replace(" ", "-")}`}>
+        {selectedMatch.status}
+      </span>
+
+      {/* Fecha y Ubicación */}
+        <div className="modal-footer">
+          <p>Ubicación: {selectedMatch.location}</p>
+          <p>Fecha: 12/01/2025</p> {/* Ejemplo de fecha */}
+        </div>
+
+        {/* Botón Cerrar */}
+        <button onClick={() => setSelectedMatch(null)}>Cerrar</button>
+      </div>
+    </div>
+    )}
     </div>
   );
 }

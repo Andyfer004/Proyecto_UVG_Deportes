@@ -1,13 +1,23 @@
 import "./MatchCard.css";
 
-function MatchCard({ team1, team2, score1, score2, status }) {
+
+type MatchCardProps = {
+  team1: string;
+  team2: string;
+  score1: number;
+  score2: number;
+  status: string;
+  onClick: () => void; // Agregamos onClick
+};
+
+function MatchCard({ team1, team2, score1, score2, status, onClick }: MatchCardProps) {
   return (
-    <div className="match-card">
+    <div className="match-card" onClick={onClick}>
       {/* Encabezado */}
       <div className="match-header">
-        <span>BO3</span>
+        <span>BO1</span>
         <span className={`match-status ${status.toLowerCase()}`}>
-          {status === "En progreso" ? "NOW PLAYING" : status}
+          {status === "En progreso" ? "En Progreso" : status}
         </span>
       </div>
 
@@ -28,4 +38,3 @@ function MatchCard({ team1, team2, score1, score2, status }) {
 }
 
 export default MatchCard;
-
