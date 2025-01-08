@@ -38,17 +38,16 @@ function GroupStage() {
       { team1: "Equipo A", team2: "Equipo B", score1: 2, score2: 1, status: "Finalizado", location: "Estadio 1" },
       { team1: "Equipo B", team2: "Equipo C", score1: 3, score2: 1, status: "En progreso", location: "Estadio 2" },
       { team1: "Equipo A", team2: "Equipo C", score1: 1, score2: 0, status: "Finalizado", location: "Estadio 3" },
+      { team1: "Equipo X", team2: "Equipo Y", score1: 0, score2: 0, status: "Pendiente", location: "Estadio 4" },
+      { team1: "Equipo Z", team2: "Equipo W", score1: 2, score2: 2, status: "En progreso", location: "Estadio 5" },
+      { team1: "Equipo A", team2: "Equipo Z", score1: 4, score2: 2, status: "Finalizado", location: "Estadio 6" },
+      { team1: "Equipo B", team2: "Equipo X", score1: 1, score2: 3, status: "Pendiente", location: "Estadio 7" },
     ],
     B: [
-      { team1: "Equipo X", team2: "Equipo Y", score1: 3, score2: 2, status: "Finalizado", location: "Estadio 4" },
-      { team1: "Equipo Y", team2: "Equipo Z", score1: 2, score2: 2, status: "En progreso", location: "Estadio 5" },
-      { team1: "Equipo X", team2: "Equipo Z", score1: 4, score2: 0, status: "Finalizado", location: "Estadio 6" },
+      { team1: "Equipo X", team2: "Equipo Y", score1: 3, score2: 2, status: "Finalizado", location: "Estadio 8" },
+      { team1: "Equipo Y", team2: "Equipo Z", score1: 2, score2: 2, status: "En progreso", location: "Estadio 9" },
     ],
-    C: [
-      { team1: "Equipo X", team2: "Equipo Y", score1: 3, score2: 2, status: "Pendiente", location: "Estadio 4" },
-      { team1: "Equipo Y", team2: "Equipo Z", score1: 2, score2: 2, status: "En progreso", location: "Estadio 5" },
-      { team1: "Equipo X", team2: "Equipo Z", score1: 4, score2: 0, status: "Finalizado", location: "Estadio 6" },
-    ],
+    C: [],
     D: [],
   };
 
@@ -83,18 +82,20 @@ function GroupStage() {
   );
 
   const renderMatches = () => (
-    <div className="match-list">
-      {groupMatches[activeGroup]?.map((match, index) => (
-        <MatchCard
-          key={index}
-          team1={match.team1}
-          team2={match.team2}
-          score1={match.score1}
-          score2={match.score2}
-          status={match.status}
-          onClick={() => setSelectedMatch(match)} 
-        />
-      ))}
+    <div className="matches-container">
+      <div className="matches-grid">
+        {groupMatches[activeGroup]?.map((match, index) => (
+          <MatchCard
+            key={index}
+            team1={match.team1}
+            team2={match.team2}
+            score1={match.score1}
+            score2={match.score2}
+            status={match.status}
+            onClick={() => setSelectedMatch(match)} // Abre el modal
+          />
+        ))}
+      </div>
     </div>
   );
 
@@ -136,38 +137,38 @@ function GroupStage() {
 
       {/* Modal para detalles del partido */}
       {selectedMatch && (
-  <div className="modal">
-    <div className="modal-content">
-      {/* Título */}
-      <div className="modal-header">
-        <h2>Detalles del Partido</h2>
-      </div>
+        <div className="modal">
+          <div className="modal-content">
+            {/* Título */}
+            <div className="modal-header">
+              <h2>Detalles del Partido</h2>
+            </div>
 
-      {/* Equipos y Marcador */}
-      <div className="teams">
-        <div className="team">{selectedMatch.team1}</div>
-        <div className="score">{selectedMatch.score1}</div>
-        <div className="vs">VS</div>
-        <div className="score">{selectedMatch.score2}</div>
-        <div className="team">{selectedMatch.team2}</div>
-      </div>
+            {/* Equipos y Marcador */}
+            <div className="teams">
+              <div className="team">{selectedMatch.team1}</div>
+              <div className="score">{selectedMatch.score1}</div>
+              <div className="vs">VS</div>
+              <div className="score">{selectedMatch.score2}</div>
+              <div className="team">{selectedMatch.team2}</div>
+            </div>
 
-      {/* Estado */}
-      <span className={`status ${selectedMatch.status.toLowerCase().replace(" ", "-")}`}>
-        {selectedMatch.status}
-      </span>
+            {/* Estado */}
+            <span className={`status ${selectedMatch.status.toLowerCase().replace(" ", "-")}`}>
+              {selectedMatch.status}
+            </span>
 
-      {/* Fecha y Ubicación */}
-        <div className="modal-footer">
-          <p>Ubicación: {selectedMatch.location}</p>
-          <p>Fecha: 12/01/2025</p> {/* Ejemplo de fecha */}
+            {/* Fecha y Ubicación */}
+            <div className="modal-footer">
+              <p>Ubicación: {selectedMatch.location}</p>
+              <p>Fecha: 12/01/2025</p> {/* Ejemplo de fecha */}
+            </div>
+
+            {/* Botón Cerrar */}
+            <button onClick={() => setSelectedMatch(null)}>Cerrar</button>
+          </div>
         </div>
-
-        {/* Botón Cerrar */}
-        <button onClick={() => setSelectedMatch(null)}>Cerrar</button>
-      </div>
-    </div>
-    )}
+      )}
     </div>
   );
 }

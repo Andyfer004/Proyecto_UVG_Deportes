@@ -221,3 +221,15 @@ button {
 button:hover {
   background-color: #016a2b; /* Verde más oscuro */
 }
+
+.matches-container {
+  display: flex;
+  overflow-x: auto; /* Scroll horizontal */
+  padding: 1rem;
+}
+
+.matches-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+  gap: 1rem;
+}

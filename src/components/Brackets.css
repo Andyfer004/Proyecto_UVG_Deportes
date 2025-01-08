@@ -1,0 +1,75 @@
+.bracket-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .round {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+  }
+  
+  .match {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    width: 200px;
+    position: relative;
+  }
+  
+  .team {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+  }
+  
+  .team.winner {
+    font-weight: bold;
+    color: #018e38; /* Destacar al ganador */
+  }
+  
+  .score {
+    background-color: #e0e0e0;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+  
+  .match::before,
+  .match::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 1px;
+    background-color: #ddd;
+  }
+  
+  .match::before {
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .match::after {
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  /* Línea vertical que conecta los partidos */
+  .round .match:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    height: calc(100% + 1.5rem);
+    background-color: #ddd;
+    top: 50%;
+    left: calc(100% + 20px);
+    transform: translateY(-50%);
+  }  
