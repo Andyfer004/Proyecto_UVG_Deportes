@@ -8,11 +8,25 @@
     min-height: 100vh;
     align-items: center;
     overflow-x: hidden;
+    position: relative;
   }
 
-  /* Contenido Principal */
   .main-content {
     flex: 1;
     padding: 1rem;
     text-align: center;
   }
+
+  .sc-gEvEer {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 20px;
+  }
+
+  .sc-gEvEer div {
+    font-size: 12px;
+    color: #bbb;
+  }
+    

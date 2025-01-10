@@ -92,7 +92,7 @@ function GroupStage() {
             score1={match.score1}
             score2={match.score2}
             status={match.status}
-            onClick={() => setSelectedMatch(match)} // Abre el modal
+            onClick={() => setSelectedMatch(match)} 
           />
         ))}
       </div>
