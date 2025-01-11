@@ -17,6 +17,7 @@ function Login() {
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: '100vh',
+        minWidth: '100vw',
         backgroundColor: '#f0f4f8',
         padding: '1rem',
       }}
@@ -29,6 +30,7 @@ function Login() {
           boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
           width: '100%',
           maxWidth: '400px',
+          justifyContent: 'center',
         }}
       >
         <h1

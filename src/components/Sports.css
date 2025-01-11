@@ -1,4 +1,4 @@
-/* Contenedor de los íconos */
+
 .sports-icons-container {
     display: flex;
     justify-content: center;
@@ -6,28 +6,28 @@
     padding: 2rem 0;
   }
   
-  /* Estilo para cada ícono */
+  
   .sports-icon {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 80px;
     height: 80px;
-    border-radius: 50%; /* Forma circular */
-    background-color: #000; /* Fondo negro */
-    transition: all 0.3s ease; /* Animación suave */
+    border-radius: 50%;
+    background-color: #000; 
+    transition: all 0.3s ease; 
     cursor: pointer;
   }
   
   .sports-icon:hover {
-    background-color: #018e38; /* Fondo verde al hover */
-    transform: scale(1.2); /* Agranda el ícono */
+    background-color: #018e38; 
+    transform: scale(1.2); 
   }
   
-  /* Estilo de la imagen del ícono */
+  
   .sports-icon-img {
     width: 70px;
     height: 70px;
-    filter: invert(1); /* Hace la imagen blanca */
+    filter: invert(1); 
     transition: all 0.3s ease;
   }  
