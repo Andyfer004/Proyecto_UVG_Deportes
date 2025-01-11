@@ -1,0 +1,25 @@
+  .futbol-page {
+    font-family: "Inter", sans-serif;
+    width: 100vw;
+    margin: 0 auto;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  .main-content {
+    flex: 1;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .sc-aXZVg {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    margin: 0 auto; 
+  }  
