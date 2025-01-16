@@ -2,8 +2,9 @@ import "./Futbol.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import GroupTable from "../components/GroupTable";
-import TournamentBracket from "../components/TournamentBracket";
-function Futbol() {
+import MyBracket from "../components/MyBracket";
+
+function Futbol() {     
 
     return(
         <div className="futbol-page">
@@ -13,7 +14,7 @@ function Futbol() {
                 <GroupTable />
                 
                 <h1>Fase Final</h1>
-                <TournamentBracket />
+                <MyBracket />
             
             </main>
             <Footer/>
