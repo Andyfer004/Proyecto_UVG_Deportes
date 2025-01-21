@@ -17,5 +17,29 @@
     text-align: center;
   }
 
+  .brackets-viewer {
+    /* Colors */
+    --primary-background: #f9f9f9; /* Fondo principal más claro */
+    --secondary-background: #e0e0e0; /* Fondo de elementos secundarios */
+    --match-background: #ffffff; /* Fondo de los partidos */
+    --font-color: #333333; /* Texto principal */
+    --win-color: #018e38; /* Verde para victorias */
+    --loss-color: #fb7e94; /* Rojo para derrotas */
+    --label-color: #016a2b; /* Verde oscuro para etiquetas */
+    --hint-color: #a7a7a7; /* Gris para información secundaria */
+    --connector-color: #cccccc; /* Color de los conectores */
+    --border-color: #e0e0e0; /* Borde de los partidos */
+    --border-hover-color: #018e38; /* Borde al pasar el mouse */
+  
+    /* Sizes */
+    --text-size: 14px; /* Tamaño del texto */
+    --round-margin: 50px; /* Margen entre rondas */
+    --match-width: 160px; /* Ancho de cada partido */
+    --match-horizontal-padding: 10px; /* Espaciado horizontal en partidos */
+    --match-vertical-padding: 8px; /* Espaciado vertical en partidos */
+    --connector-border-width: 2px; /* Ancho de las líneas del conector */
+    --match-border-width: 2px; /* Ancho del borde de los partidos */
+    --match-border-radius: 0.75em; /* Radio de los bordes redondeados */
+  }  
   
   

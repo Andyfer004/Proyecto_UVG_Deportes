@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 
+{/*Ejemplo del set de datos que se deben de enviar al componente por medio de la API*/}
 const data = 
   {
     "participant": [
@@ -204,20 +205,34 @@ const data =
     "match_game": []
   }
 
-async function render() {
+  declare global {
+    interface Window {
+        bracketsViewer: any;
+    }
+  }
 
-  window.bracketsViewer.render({
+async function render() {
+    const container = document.querySelector(".brackets-viewer");
+    if (!container) {
+      console.error("Container not found");
+      return;
+    }
+    
+    container.innerHTML = "";
+  
+    window.bracketsViewer.render({
     stages: data.stage,
     matches: data.match,
     matchGames: data.match_game,
     participants: data.participant,
-  });
+    });
 }
 
 function MyBracket() {
-  useEffect(() => {
-    render();
-  }, []);
+    useEffect(() => {
+        console.log("Render Brackets")
+        render();
+    }, []);
   
   return <div className="brackets-viewer"></div>
 }
